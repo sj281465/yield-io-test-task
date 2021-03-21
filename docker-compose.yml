@@ -26,8 +26,8 @@ services:
     - 'TOKEN_URL=http://localhost/keycloak/realms/app/protocol/openid-connect/token'
     - 'USERINFO_URL=http://localhost/keycloak/realms/app/protocol/openid-connect/userinfo'
     - 'JWKS_URL=http://localhost/keycloak/realms/app/protocol/openid-connect/certs'
-    entrypoint: ['python3']
-    command: ['app.py']
+    entrypoint: ['gunicorn']
+    command: ["app:app", "--bind=0.0.0.0:8000", "--workers=4", "--log-level=debug", "--reload"]
   keycloak:
     image: 'jboss/keycloak:11.0.2'
     container_name: 'keycloak'
