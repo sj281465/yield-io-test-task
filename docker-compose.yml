@@ -48,11 +48,11 @@ services:
     networks:
     - 'backend'
     expose:
-    - '8080'
+    - '8090'
     - '9990'
     command:
     - '-b=0.0.0.0'
-    - '-Djboss.http.port=8080'
+    - '-Djboss.http.port=8090'
     volumes:
     - './opt/jboss/startup-scripts:/opt/jboss/startup-scripts'
     - './realm-export.json:/realm-export.json'
